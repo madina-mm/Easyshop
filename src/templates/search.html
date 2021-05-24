@@ -1,0 +1,241 @@
+<html><head>
+<meta charset="UTF-8">
+<title>EasyShop</title>
+<meta name="description" content="A description of your website">
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Hugo 0.83.1">
+<link href="static/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="wrapper">
+
+
+
+  <div id="page_content">
+
+  <div class="navigation">
+  <ul>
+  <li><a href="/home">Home</a></li>
+  <li><a href="/search">Search</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/login">Log in</a></li>
+  <li><a href="/logout">Log out</a></li>
+  </ul>
+  </div>
+
+    <div class="left_section">
+    <div class="common_content" style="
+    padding-bottom: -;
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+">
+        <h2>Search</h2>
+        <hr>
+      <link href="form-validation.css" rel="stylesheet">
+
+
+
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+
+
+
+    </div>
+
+    <div class="row g-5">
+
+      <div class="col-md-7 col-lg-8">
+
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+
+
+
+
+            <div class="col-12">
+              <label for="search-term" class="form-label">Product name</label>
+              <div class="input-group has-validation">
+
+                <input type="text" class="form-control" id="product-name" placeholder="Product name  e.g iphone 11 " required="" style="
+    width: 204px;
+    height: 39px;
+">
+              <div class="invalid-feedback">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12" style="
+    margin-top: 3px;
+">
+              <label for="min-price" class="form-label">Min-Price<span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" placeholder="0" id="minPrice" style="
+    width: 154px;
+    height: 34px;
+">
+
+            </div>
+
+
+
+            <div class="col-12" style="
+    margin-top: 5px;
+">
+              <label for="max-price" class="form-label">Max price<span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="maxPrice" placeholder="10000" style="
+    width: 154px;
+    height: 34px;
+">
+            </div>
+
+            <div class="col-md-5" style="
+    height: 35px;
+    margin-top: 5px;
+">
+              <label for="Pricefilter" class="form-label">Price Filter</label>
+              <select class="form-select" id="priceFilter" style="
+    height: 27px;
+">
+                <option value="">default</option>
+
+              <option>Ascending</option><option>Descending</option></select>
+
+            </div>
+
+            <div class="col-md-4" style="
+    height: 35px;
+    margin-top: 5px;
+">
+              <label for="Currency" class="form-label">Currency</label>
+              <select class="form-select" id="price-currency" style="
+    height: 27px;
+    width: 85px;
+">
+                <option value="">default</option>
+                <option>USD</option>
+              <option>AZN</option></select>
+
+            </div>
+
+
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check" style="
+    width: 300px;
+">
+            <input type="checkbox" class="form-check-input" id="tapaz">
+            <label class="form-check-label" for="tapaz-select">Tap.az</label>
+          </div>
+
+          <div class="form-check" style="
+    width: 300px;
+">
+            <input type="checkbox" class="form-check-input" id="amazon">
+            <label class="form-check-label" for="amazon-select">Amazon.com</label>
+          </div>
+
+          <hr class="my-4">
+
+
+
+          <div class="my-3">
+
+
+
+          </div>
+
+
+
+
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+        <br>
+      </div>
+
+      <div class="top_content border_none">
+        <div class="column_one">
+          <h2>Tapaz</h2>
+          <p>{{ n }} results found</p>
+          <br>
+          <div class="prdct-cntnr-wrppr">
+            {% for item in tapaz_results %}
+              <div class="p-card-wrppr">
+                <article class="item-info">
+                  <div class="item-body">
+                    <div>
+                      <h3>
+                      <a class="products-name" href="{{ item['url'] }}" target="_blank">{{ item['name'] }}</a>
+                      </h3>
+                    </div>
+                    <div>
+                      <div class="products-price">
+                        <span class="price-val">{{ item['price'] }}</span>
+                        <span class="price-cur">AZN</span>
+                      </div>
+                      <small class="time-created">{{ item['date'] }}</small>
+                    </div>
+                  </div>
+                </article>
+            </div>
+            {% endfor %}
+          </div>
+          </div>
+        <div class="column_two border_left">
+          <h2>Amazon</h2>
+          <p>{{ m }} results found</p>
+          <br>
+          <div class="prdct-cntnr-wrppr">
+            {% for item in amazon_results %}
+              <div class="p-card-wrppr">
+                <article class="item-info">
+                  <div class="item-body">
+                    <div>
+                      <h3>
+                      <a class="products-name" href="{{ item['url'] }}" target="_blank">{{ item['name'] }}</a>
+                      </h3>
+                    </div>
+                    <div>
+                      <h4 class="products-price">{{ item['price'] }}</h4>
+                      <small class="products-rating">{{ item['rating'] }}</small>
+                    </div>
+                  </div>
+
+                </article>
+            </div>
+            {% endfor %}
+          </div>
+          <p></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+
+  <!--start footer from here-->
+  <div id="footer"><br>
+
+  </div>
+
+  <!--/. end footer from here-->
+  </div>
+
+</div>
+
+
+</body></html>
